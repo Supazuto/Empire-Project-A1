@@ -11,20 +11,22 @@ def equip_item(person, weapon):
     # TODO: เขียนโค้ดตรงนี้
     person_money = int(person["money"])
     weapon_price = int(weapon["price"])
+    person_power = person["power"]
     equipment = person["equipment"]
     if person_money < weapon_price :
         if equipment != "ไม่มี" :
-            return {"status" : True , "message" : "มีอาวุธอยู่แล้ว"}
+            return {"status" : False , "message" : "มีอาวุธอยู่แล้ว"}
 
-    else: 
+    else:
         person_money -= weapon_price
+        person_power += weapon["bonus"]
+        person["power"] = person_power
         person["money"] = person_money
-        person.pop("equipment")
         person["equipment"] = weapon["name"]
-        return {"status" : True , "message" : "ทำรายการสำเร็จ"}
-    return {"status" : False , "message" : "เงินไม่พอ"}
+        return {"status" : "True" , "message" : "ทำรายการสำเร็จ"}
+    return {"status" : "False" , "message" : "เงินไม่พอ"}
 
-    
+
 
 
 # ทดสอบเฉพาะไฟล์ตัวเอง: พิมพ์  python -m weapon_shop.equip_item

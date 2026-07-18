@@ -57,7 +57,11 @@ def main():
             # 2) เรียก search_member(ชื่อ) แล้วเก็บผลไว้ในตัวแปร
             # 3) ถ้าผลไม่ใช่ None -> print ข้อมูล (ชื่อ, ตำแหน่ง, เงิน, อาวุธ)
             #    ถ้าเป็น None    -> print "ไม่พบชื่อในระบบ"
-            print(f"{search_member(name_insert)}")
+            if search_member(name_insert) != "None" :
+                print(f"{search_member(name_insert)}")
+            elif search_member(name_insert) == "None" :
+                print("ไม่พบชื่อในระบบ")
+
 
         # ---------- เมนู 4 (TODO) ----------
         elif choice == '4':
@@ -68,7 +72,11 @@ def main():
             # 3) True  -> print สั่งเก็บเรียบร้อย
             #    False -> print "ไม่พบชื่อในระบบ"\
             name_insert = str(input("ใส่ชื่อ : "))
-            print(f"{remove_member(name_insert)}")
+            if remove_member(name_insert) == 'True':
+                print("สั่งเก็บเรียบร้อย")
+            else:
+                print("ไม่พบชื่อในระบบ")
+            # print(f"{remove_member(name_insert)}")
 
 
         # ---------- เมนู 5 (TODO) ----------
@@ -90,11 +98,19 @@ def main():
             # print(weapon)
 
             name_insert = str(input("ใส่ชื่อ : "))
-            search_member(name_insert)
+            if search_member(name_insert) == "None" :
+                print("ไม่พบรายชื่อลูกน้องคนนี้")
+                break
+            else:
+                pass
 
-            
-            print(equip_item(search_member(name_insert), weapon))
-            
+
+            print(equip_item(search_member(name_insert), weapon)["message"])
+            if equip_item(search_member(name_insert), weapon)["status"] == "True" :
+                print(search_member(name_insert)["power"])
+
+
+
 
 
         # ---------- เมนู 6 (TODO ของหัวหน้า — OPTIONAL) ----------
@@ -107,8 +123,13 @@ def main():
             # 3) ถ้าผล["status"] เป็น True -> print ภารกิจสำเร็จ + เงินรางวัล + ยอดเงินปัจจุบัน
             #    ถ้าเป็น False -> เรียก remove_member(คน["name"]) แล้ว print ภารกิจล้มเหลว ถูกลบออกจากแฟมิลี่
             name_insert = str(input("ใส่ชื่อ : "))
-            search_member(name_insert)
-            send_mission(search_member(name_insert))
+            if search_member(name_insert) == "None" :
+                print("ไม่พบรายชื่อลูกน้องคนนี้ในระบบ")
+                break
+            elif send_mission(search_member(name_insert))["status"] == "True" :
+                print(f"ภารกิจสำเร็จ | รางวัลที่ได้รับ {send_mission(search_member(name_insert))["reward"]} | เงินทั้งหมด {search_member(name_insert)["money"]}")
+
+
 
         elif choice == '7':
             print("ปิดระบบ...")
