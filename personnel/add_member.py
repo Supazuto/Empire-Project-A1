@@ -10,7 +10,7 @@ def add_member(name, age, power, money):
         role = "Sponsor"
     else :
         role = "Slave"
-    new_membernaja = { "name" : name , "age" : age , "role" : role , "power" : power , "money" : money , "eqipment" : "ไม่มี" }
+    new_membernaja = { "name" : name , "age" : age , "role" : role , "power" : power , "money" : money , "equipment" : "ไม่มี" }
 
     family_members.append(new_membernaja)
     return new_membernaja
@@ -19,7 +19,7 @@ def add_member(name, age, power, money):
 #   - สร้าง dict สมาชิกใหม่ (key: name, age, role, power, money, equipment เริ่มต้น "ไม่มี")
 #   - เพิ่มเข้า family_members แล้ว return dict นั้น
     # TODO: เขียนโค้ดตรงนี้
-    pass
+
 
 
 # ทดสอบเฉพาะไฟล์ตัวเอง: พิมพ์  python -m personnel.add_member
