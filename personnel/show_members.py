@@ -1,15 +1,10 @@
-# =====================================================
-#  personnel/show_members.py — คนรับผิดชอบ: ______________________
-#  หน้าที่: แสดงรายชื่อลูกน้องทั้งหมดในแฟมิลี่
-# =====================================================
+
 from data import family_members
 
 def show_members():
-#   - print ข้อมูลลูกน้องทุกคนใน family_members บรรทัดละคน (ชื่อ, ตำแหน่ง, ความโหด, อาวุธ)
-    # TODO: เขียนโค้ดตรงนี้
-    pass
+    for member in family_members :
+        print(f"{member["name"]},{member["age"]},{member["role"]},{member["power"]},{member["money"]},{member["equipment"]}")
 
 
-# ทดสอบเฉพาะไฟล์ตัวเอง: พิมพ์  python -m personnel.show_members
 if __name__ == "__main__":
-    show_members()   # ต้องเห็น Tony กับ Luigi คนละบรรทัด
+    show_members()    
