@@ -9,7 +9,22 @@ def equip_item(person, weapon):
 #   - ผ่านทั้งคู่ -> หักเงิน, เปลี่ยน equipment เป็นชื่ออาวุธ, บวก bonus เข้า power
 #   - return {"status": True/False, "message": ข้อความบอกผล}
     # TODO: เขียนโค้ดตรงนี้
-    pass
+    person_money = int(person["money"])
+    weapon_price = int(weapon["price"])
+    equipment = person["equipment"]
+    if person_money < weapon_price :
+        if equipment != "ไม่มี" :
+            return {"status" : True , "message" : "มีอาวุธอยู่แล้ว"}
+
+    else: 
+        person_money -= weapon_price
+        person["money"] = person_money
+        person.pop("equipment")
+        person["equipment"] = weapon["name"]
+        return {"status" : True , "message" : "ทำรายการสำเร็จ"}
+    return {"status" : False , "message" : "เงินไม่พอ"}
+
+    
 
 
 # ทดสอบเฉพาะไฟล์ตัวเอง: พิมพ์  python -m weapon_shop.equip_item
