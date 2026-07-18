@@ -5,7 +5,7 @@ def search_member(target_name):
     target_name = target_name.lower() 
     for member in family_members :
         if member["name"].lower() == target_name :
-            return target_name
+            return member
     return None
     
 if __name__ == "__main__":

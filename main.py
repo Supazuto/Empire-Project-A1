@@ -50,12 +50,14 @@ def main():
         # ---------- เมนู 3 (TODO) ----------
         elif choice == '3':
             print("\n--- ค้นหาประวัติ ---")
+            name_insert = str(input("ใส่ชื่อ : "))
+            search_member(name_insert)
             # TODO:
             # 1) รับชื่อที่ต้องการค้นหาด้วย input()
             # 2) เรียก search_member(ชื่อ) แล้วเก็บผลไว้ในตัวแปร
             # 3) ถ้าผลไม่ใช่ None -> print ข้อมูล (ชื่อ, ตำแหน่ง, เงิน, อาวุธ)
             #    ถ้าเป็น None    -> print "ไม่พบชื่อในระบบ"
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            print(f"{search_member(name_insert)}")
 
         # ---------- เมนู 4 (TODO) ----------
         elif choice == '4':
@@ -64,8 +66,10 @@ def main():
             # 1) รับชื่อคนที่ต้องการลบด้วย input()
             # 2) เรียก remove_member(ชื่อ) แล้วเก็บผลไว้ (ได้ True หรือ False)
             # 3) True  -> print สั่งเก็บเรียบร้อย
-            #    False -> print "ไม่พบชื่อในระบบ"
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            #    False -> print "ไม่พบชื่อในระบบ"\
+            name_insert = str(input("ใส่ชื่อ : "))
+            print(f"{remove_member(name_insert)}")
+
 
         # ---------- เมนู 5 (TODO) ----------
         elif choice == '5':
@@ -80,7 +84,18 @@ def main():
             # 4) เรียก equip_item(คน, อาวุธ) แล้วเก็บผลไว้ (ได้ dict)
             #    print ผล["message"]
             #    และถ้าผล["status"] เป็น True -> print ค่าพลังใหม่ของคนนั้น
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            show_catalog()
+            weapon_code = input("รหัสอาวุธที่ต้องการ : ")
+            weapon = weapons_catalog.get(weapon_code)
+            # print(weapon)
+
+            name_insert = str(input("ใส่ชื่อ : "))
+            search_member(name_insert)
+
+            
+            print(equip_item(search_member(name_insert), weapon))
+            
+
 
         # ---------- เมนู 6 (TODO ของหัวหน้า — OPTIONAL) ----------
         elif choice == '6':
@@ -91,7 +106,9 @@ def main():
             # 2) เรียก send_mission(คน) แล้วเก็บผลไว้ (ได้ dict)
             # 3) ถ้าผล["status"] เป็น True -> print ภารกิจสำเร็จ + เงินรางวัล + ยอดเงินปัจจุบัน
             #    ถ้าเป็น False -> เรียก remove_member(คน["name"]) แล้ว print ภารกิจล้มเหลว ถูกลบออกจากแฟมิลี่
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            name_insert = str(input("ใส่ชื่อ : "))
+            search_member(name_insert)
+            send_mission(search_member(name_insert))
 
         elif choice == '7':
             print("ปิดระบบ...")
